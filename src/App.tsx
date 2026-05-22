@@ -59,6 +59,127 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  // Dynamic Page-level SEO Meta, Canonical Link and JSON-LD Management
+  useEffect(() => {
+    // 1. Determine active page SEO components
+    let title = "US LLC — Premium USA Business Formation & Registered Agent";
+    let desc = "US LLC delivers premium LLC company formation, corporate registered agent services, state compliance filing, IP protection, and ongoing legal maintenance for global and local founders.";
+    let pathSegment = "";
+    let keywords = "US LLC, business formation, LLC registration, registered agent service, trademark search, Delaware LLC, Wyoming LLC, state compliance, corporate maintenance";
+    let ldType = "LegalService";
+
+    if (currentPath === "/login") {
+      title = "Secure Client Portal Login | US LLC";
+      desc = "Access your US LLC dashboard securely. Retrieve legal company records, request compliance status alerts, and contact your designated registered agent.";
+      pathSegment = "/login";
+      keywords = "US LLC login, client portal, corporate dashboard, secure access, legal portal, formation logs, member access";
+      ldType = "WebApplication";
+    } else if (currentPath === "/admin") {
+      title = "Operations Control Center | US LLC Corporate Dashboard";
+      desc = "Staff and Administrator operations management panel for processing US LLC state filings, auditing trademark requests, and coordinating formation checklists.";
+      pathSegment = "/admin";
+      keywords = "operator dashboard, administrative access, company records audit, backoffice check";
+      ldType = "WebApplication";
+    } else if (currentPath === "/profile") {
+      title = "Corporate Founder Workspace | My US LLC Profile";
+      desc = "Review your filed US business entities, retrieve employer identification numbers (EIN), check registered agent status, and update state annual report notifications.";
+      pathSegment = "/profile";
+      keywords = "member dashboard, Delaware formation, EIN lookup, registered agent letter, corporate bylaws";
+      ldType = "WebApplication";
+    }
+
+    const canonicalUrl = `https://usllc.online${pathSegment}`;
+
+    // 2. Set Document Title
+    document.title = title;
+
+    // 3. Set Canonical Link
+    let canonicalNode = document.querySelector('link[rel="canonical"]');
+    if (!canonicalNode) {
+      canonicalNode = document.createElement('link');
+      canonicalNode.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalNode);
+    }
+    canonicalNode.setAttribute('href', canonicalUrl);
+
+    // 4. Set Meta Description
+    let descNode = document.querySelector('meta[name="description"]');
+    if (!descNode) {
+      descNode = document.createElement('meta');
+      descNode.setAttribute('name', 'description');
+      document.head.appendChild(descNode);
+    }
+    descNode.setAttribute('content', desc);
+
+    // 5. Set Meta Keywords
+    let keywordsNode = document.querySelector('meta[name="keywords"]');
+    if (!keywordsNode) {
+      keywordsNode = document.createElement('meta');
+      keywordsNode.setAttribute('name', 'keywords');
+      document.head.appendChild(keywordsNode);
+    }
+    keywordsNode.setAttribute('content', keywords);
+
+    // 6. Set Open Graph (OG) Tags
+    const updateOgTag = (property: string, content: string) => {
+      let ogNode = document.querySelector(`meta[property="${property}"]`);
+      if (!ogNode) {
+        ogNode = document.createElement('meta');
+        ogNode.setAttribute('property', property);
+        document.head.appendChild(ogNode);
+      }
+      ogNode.setAttribute('content', content);
+    };
+    updateOgTag('og:title', title);
+    updateOgTag('og:description', desc);
+    updateOgTag('og:url', canonicalUrl);
+
+    // 7. Set Twitter Card Tags
+    const updateTwitterTag = (name: string, content: string) => {
+      let twitterNode = document.querySelector(`meta[name="${name}"]`);
+      if (!twitterNode) {
+        twitterNode = document.createElement('meta');
+        twitterNode.setAttribute('name', name);
+        document.head.appendChild(twitterNode);
+      }
+      twitterNode.setAttribute('content', content);
+    };
+    updateTwitterTag('twitter:title', title);
+    updateTwitterTag('twitter:description', desc);
+
+    // 8. Dynamic JSON-LD structured data update
+    let jsonLdNode = document.getElementById('seo-jsonld');
+    if (jsonLdNode) {
+      try {
+        const schema = {
+          "@context": "https://schema.org",
+          "@type": ldType,
+          "name": "US LLC",
+          "url": canonicalUrl,
+          "logo": "https://usllc.online/logo.png",
+          "image": "https://usllc.online/og-image.png",
+          "description": desc,
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "admin@usllc.online"
+          },
+          "offers": {
+            "@type": "Offer",
+            "description": "USA state formation compliance checking and legal entity filing assistance"
+          }
+        };
+        jsonLdNode.textContent = JSON.stringify(schema, null, 2);
+      } catch (e) {
+        // fail-safe
+      }
+    }
+  }, [currentPath]);
+
   // Secure conditional routing rules
   useEffect(() => {
     if (currentPath === '/login' && session) {
