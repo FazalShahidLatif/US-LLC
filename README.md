@@ -1,6 +1,6 @@
 # US LLC — usllc.online (Beta Preview Model)
 
-Premium, high-contrast editorial corporate portal for **US LLC**, built to stage the upcoming full-spectrum suite of business formation services. Handcrafted by **SaaSSkul** ([saasskul.com](https://saasskul.com)).
+Premium, high-contrast editorial corporate portal for **US LLC**, built to stage the upcoming full-spectrum suite of business formation services. Handcrafted for **US LLC** ([usllc.online](https://usllc.online)).
 
 Official Launch Scheduled for: **15th June, 2026**
 
@@ -69,5 +69,5 @@ The output assets will be rendered directly inside the `/dist` bundle directory.
 
 ## 📩 Support & Queries
 For any technical queries, suggestions, or potential collaboration requests during the system Beta phase:
-- **Email:** [support@saasskul.com](mailto:support@saasskul.com) or [support@saasskull.com](mailto:support@saasskull.com)
-- **Developer Website:** [saasskul.com](https://saasskul.com)
+- **Email:** [admin@usllc.online](mailto:admin@usllc.online)
+- **Website:** [usllc.online](https://usllc.online)

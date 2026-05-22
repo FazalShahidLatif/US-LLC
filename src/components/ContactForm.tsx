@@ -80,7 +80,7 @@ export default function ContactForm() {
           <span className="text-[9px] uppercase font-bold tracking-widest text-slate-400 font-mono">Contact & Support Desk</span>
           <h4 className="text-xl font-serif font-black text-slate-900 mt-1">Queries & Suggestions</h4>
           <p className="text-xs text-slate-500 mt-1 leading-relaxed font-body-serif">
-            Have questions regarding the US LLC platform architecture, our upcoming state APIs, or SaaSSkul launch protocols? Drop us a line. We also actively audit incoming requests via <strong className="text-slate-800">support@saasskul.com</strong>.
+            Have questions regarding the US LLC platform architecture or our upcoming state APIs? Drop us a line. We also actively audit incoming requests via <strong className="text-slate-800">admin@usllc.online</strong>.
           </p>
         </div>
 
@@ -104,7 +104,7 @@ export default function ContactForm() {
               <input
                 id="input-contact-email"
                 type="email"
-                placeholder="e.g. elena@saasskul.com"
+                placeholder="e.g. elena@usllc.online"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full text-xs rounded-none bg-slate-50 border border-slate-200 focus:bg-white focus:border-indigo-650 transition-all px-3.5 py-3 focus:outline-none focus:ring-0"
@@ -230,7 +230,7 @@ export default function ContactForm() {
           </div>
         </div>
 
-        {/* SaaSSkul launch banner indicator info */}
+        {/* US LLC launch banner indicator info */}
         <div className="mt-6 pt-5 border-t border-slate-200 bg-slate-100/40 p-3 rounded-none border border-slate-200">
           <div className="flex justify-between items-center text-xs">
             <span className="text-slate-800 font-bold uppercase tracking-wider text-[10px] font-mono">Vercel Launch Status</span>
@@ -240,12 +240,12 @@ export default function ContactForm() {
             This module represents stateful form transmission. Our code contains zero back-end endpoints which guarantees simple hosting setups on standard global Vercel clusters.
           </p>
           <a
-            href="https://saasskul.com"
+            href="https://usllc.online"
             target="_blank"
             rel="noreferrer"
             className="text-[9px] text-slate-700 hover:text-indigo-650 font-bold block mt-2 hover:underline inline-flex items-center gap-0.5 uppercase tracking-wider font-mono"
           >
-            <span>Learn about SaaSSkul Solutions</span>
+            <span>Learn about US LLC Solutions</span>
             <ArrowUpRight className="w-2.5 h-2.5" />
           </a>
         </div>

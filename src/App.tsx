@@ -174,12 +174,12 @@ export default function App() {
             <a href="#trademark" className="hover:text-slate-900 transition-colors">Trademark Screen</a>
             <a href="#contact" className="hover:text-slate-900 transition-colors">Queries & Suggestions</a>
             <a 
-              href="https://saasskul.com" 
+              href="https://usllc.online" 
               target="_blank" 
               rel="noreferrer" 
               className="text-slate-400 hover:text-slate-900 transition-colors inline-flex items-center gap-0.5"
             >
-              <span>SaaSSkul</span>
+              <span>US LLC</span>
               <ArrowUpRight className="w-2.5 h-2.5 text-slate-400" />
             </a>
 
@@ -406,7 +406,7 @@ export default function App() {
                   Can I submit suggestions during this Beta preview?
                 </h5>
                 <p className="leading-relaxed font-body-serif text-slate-550">
-                  Yes, definitely. Please submit suggestions in the form below or drop directly an message email transmission targeting <strong className="text-slate-800">support@saasskul.com</strong>.
+                  Yes, definitely. Please submit suggestions in the form below or drop directly an message email transmission targeting <strong className="text-slate-800">admin@usllc.online</strong>.
                 </p>
               </div>
             </div>
@@ -470,11 +470,8 @@ export default function App() {
                 For prompt suggestion reviews, email our core team at support:
               </p>
               <div className="space-y-1 text-slate-300 font-mono text-xs">
-                <a href="mailto:support@saasskul.com" className="block text-yellow-400 hover:underline">
-                  support@saasskul.com
-                </a>
-                <a href="mailto:support@saasskull.com" className="block text-slate-400 hover:underline text-[11px]">
-                  support@saasskull.com
+                <a href="mailto:admin@usllc.online" className="block text-yellow-400 hover:underline">
+                  admin@usllc.online
                 </a>
               </div>
             </div>
@@ -492,17 +489,16 @@ export default function App() {
               </p>
             </div>
 
-            <div className="text-center sm:text-right bg-slate-900 border border-slate-800 p-3 rounded-none font-mono">
-              <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">Developer Context</p>
-              <p className="text-xs text-slate-300 mt-1 font-semibold">
-                Created and developed by{' '}
+            <div className="text-center sm:text-right bg-slate-900 border border-slate-800 p-3 rounded-none font-mono font-bold">
+              <p className="text-[10px] text-slate-400 uppercase tracking-wider">Developer Context</p>
+              <p className="text-xs text-slate-300 mt-1">
                 <a 
                   href="https://saasskul.com" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="text-yellow-455 hover:text-white transition-all underline decoration-yellow-500/50 hover:decoration-yellow-400 font-bold"
+                  className="text-yellow-455 hover:text-white transition-all underline decoration-yellow-500/50 hover:decoration-yellow-400"
                 >
-                  SaaSSkul
+                  Site Developed by SaaSSkul
                 </a>
               </p>
             </div>

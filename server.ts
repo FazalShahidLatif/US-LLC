@@ -17,19 +17,19 @@ function signToken(payload: object): string {
 // Predefined set of credentials mapping to roles for transparent evaluation
 const PREDEFINED_USERS = [
   {
-    email: 'admin@saasskul.com',
+    email: 'admin@usllc.online',
     password: 'admin-secret-access',
     role: 'admin',
     name: 'Chief Admin Counsel'
   },
   {
-    email: 'staff@saasskul.com',
+    email: 'staff@usllc.online',
     password: 'staff-secret-access',
     role: 'staff',
     name: 'Senior Operations Staff'
   },
   {
-    email: 'user@saasskul.com',
+    email: 'user@usllc.online',
     password: 'user-secret-access',
     role: 'user',
     name: 'Beta Corporate Founder'

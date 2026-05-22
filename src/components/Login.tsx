@@ -17,21 +17,21 @@ export default function Login({ onLoginSuccess, onNavigateHome }: LoginProps) {
   const PRESET_CREDENTIALS = [
     {
       label: 'Admin Account',
-      email: 'admin@saasskul.com',
+      email: 'admin@usllc.online',
       password: 'admin-secret-access',
       role: 'admin',
       badge: 'Chief Admin Counsel'
     },
     {
       label: 'Staff Account',
-      email: 'staff@saasskul.com',
+      email: 'staff@usllc.online',
       password: 'staff-secret-access',
       role: 'staff',
       badge: 'Senior Operations Staff'
     },
     {
       label: 'Standard Client',
-      email: 'user@saasskul.com',
+      email: 'user@usllc.online',
       password: 'user-secret-access',
       role: 'user',
       badge: 'Beta Corporate Founder'
