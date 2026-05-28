@@ -162,7 +162,7 @@ export default function ServiceExplore() {
             {/* Modal Heading block */}
             <div className="p-6 bg-indigo-950 text-white flex justify-between items-start border-b border-indigo-900">
               <div>
-                <span className="text-[9px] font-bold tracking-widest uppercase font-mono text-indigo-300">LegalZoom-Inspired Vertical Guide</span>
+                <span className="text-[9px] font-bold tracking-widest uppercase font-mono text-indigo-300">US LLC Premium Corporate Standard</span>
                 <h4 className="text-xl font-serif font-black text-white mt-1">{selectedService.title}</h4>
               </div>
               <button

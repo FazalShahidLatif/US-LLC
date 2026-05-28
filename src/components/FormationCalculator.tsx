@@ -97,7 +97,7 @@ export default function FormationCalculator() {
       let available = true;
       let reason = "This name appears completely available in state registry indexes! We will run formal USPTO and specific regional index scrubbers upon final placement.";
 
-      if (lower.includes('legalzoom') || lower.includes('zoom')) {
+      if (lower.includes('establishedbrand') || lower.includes('trademarkconflict')) {
         available = false;
         reason = "Name is conflictive with registered major trademark holdings. Please formulate a unique layout.";
       } else if (lower.includes('amazon') || lower.includes('apple') || lower.includes('google')) {
@@ -128,7 +128,7 @@ export default function FormationCalculator() {
           <span className="text-[10px] uppercase font-bold tracking-widest text-indigo-300">Interactive Setup Engine</span>
           <h3 className="text-xl font-serif font-black tracking-tight text-white flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-indigo-400" />
-            LegalZoom-inspired Incorporation Calculator
+            Premium US LLC Incorporation Calculator
           </h3>
         </div>
         <div className="hidden md:block text-right">
@@ -245,7 +245,7 @@ export default function FormationCalculator() {
             <label className="block text-xs font-bold text-slate-900 uppercase tracking-widest">
               Step 3: Select Corporate Classification
             </label>
-            <p className="text-xs text-slate-500 font-body-serif leading-relaxed">Compare the core formats compatible with LegalZoom class structures.</p>
+            <p className="text-xs text-slate-500 font-body-serif leading-relaxed">Compare the core formats compatible with standard state-level corporate class structures.</p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {entityPackages.map((pkg) => (

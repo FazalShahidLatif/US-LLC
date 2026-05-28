@@ -343,7 +343,7 @@ export const DEFAULT_MEDIA: MediaConfig[] = [
 
 export const MOCK_TRADEMARKS = [
   { name: 'US LLC', status: 'In Use', registerability: 'Medium - Rich Generic', comments: 'Federal trademarks exist for overlapping sectors, but distinct stylization is registerable.' },
-  { name: 'LegalZoom', status: 'Registered', registerability: 'Zero', comments: 'Highly defended active service mark.' },
+  { name: 'ApexFormations', status: 'Registered', registerability: 'Zero', comments: 'Highly defended active service mark.' },
   { name: 'SaaSSkul', status: 'Available', registerability: 'Excellent - Coined word', comments: 'Unique distinctive brand. Perfect candidate for seamless trademark protection.' },
   { name: 'Apple', status: 'Registered', registerability: 'Zero', comments: 'Famous active mark.' }
 ];

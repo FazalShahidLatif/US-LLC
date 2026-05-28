@@ -7,6 +7,8 @@ import ContactForm from './components/ContactForm';
 import Login from './components/Login';
 import OperationsDashboard from './components/OperationsDashboard';
 import UserProfile from './components/UserProfile';
+import AboutUs from './components/AboutUs';
+import ContactPage from './components/ContactPage';
 import { SERVICES, TESTIMONIALS } from './data';
 import { AuthSession } from './types';
 import { 
@@ -85,6 +87,24 @@ export default function App() {
       desc = "Review your filed US business entities, retrieve employer identification numbers (EIN), check registered agent status, and update state annual report notifications.";
       pathSegment = "/profile";
       keywords = "member dashboard, Delaware formation, EIN lookup, registered agent letter, corporate bylaws";
+      ldType = "WebApplication";
+    } else if (currentPath === "/about") {
+      title = "About Our Corporate Standards & Compliance Mandate | US LLC";
+      desc = "Learn about the mission, state database integrations, E-E-A-T credentials, executive council background, and roadmap of US LLC business formation authorities.";
+      pathSegment = "/about";
+      keywords = "about US LLC, corporate history, business formation experts, compliance counsel, registered agent history, E-E-A-T credentials";
+      ldType = "LegalService";
+    } else if (currentPath === "/contact") {
+      title = "Contact Our Electronic Filing Inquiry Desk | US LLC Support";
+      desc = "Reach the US LLC corporate dispatch desks. Ask about state filing fees, registered agent services, trademark index checks, or submit platform suggestions.";
+      pathSegment = "/contact";
+      keywords = "contact US LLC, customer support desk, Delaware registered agent address, Wyoming filing office, phone call support, dispatch queries";
+      ldType = "LegalService";
+    } else if (currentPath !== "/") {
+      title = "404 Page Not Found — US LLC Corporate Registry";
+      desc = "We apologize, but the requested business registry page could not be located on the US LLC network. Use our quick links to return home or access client portals.";
+      pathSegment = "/404";
+      keywords = "404 page not found, US LLC directory, broken links, legal system search, corporate database conflict";
       ldType = "WebApplication";
     }
 
@@ -245,6 +265,73 @@ export default function App() {
     );
   }
 
+  if (currentPath === '/about') {
+    return (
+      <AboutUs 
+        onNavigateHome={() => navigate('/')} 
+        onNavigateContact={() => navigate('/contact')} 
+      />
+    );
+  }
+
+  if (currentPath === '/contact') {
+    return (
+      <ContactPage 
+        onNavigateHome={() => navigate('/')} 
+        onNavigateAbout={() => navigate('/about')} 
+      />
+    );
+  }
+
+  // Fallback 404 page for non-registered slugs
+  if (!['/', '/login', '/admin', '/profile', '/about', '/contact'].includes(currentPath)) {
+    return (
+      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6 text-white selection:bg-yellow-400 selection:text-slate-950 font-sans" id="404-container">
+        <div className="max-w-md w-full text-center space-y-8 bg-slate-900 border border-slate-800 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+          {/* Accent light stroke */}
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-indigo-500 to-yellow-400" />
+          
+          <div className="space-y-3">
+            <span className="inline-block text-[10px] uppercase font-bold tracking-widest text-yellow-405 bg-yellow-400/10 border border-yellow-400/20 px-3 py-1 rounded-none font-mono">
+              FILE NOT LOCATED — STATUS 404
+            </span>
+            <h1 className="text-3xl sm:text-4xl font-serif font-black text-white tracking-tight">
+              Registry Record Missing
+            </h1>
+            <p className="text-xs text-slate-400 leading-relaxed font-body-serif">
+              The corporate path or file slug you requested does not exist in our active US LLC state registers. It may have been relocated, or is pending official Secretary of State processing.
+            </p>
+          </div>
+
+          {/* Prompt options */}
+          <div className="space-y-3 pt-4 border-t border-slate-800/60">
+            <button
+              id="btn-return-home-404"
+              onClick={() => navigate('/')}
+              className="w-full bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-bold uppercase text-[10px] tracking-widest py-3 rounded-none transition-all cursor-pointer flex items-center justify-center gap-2"
+            >
+              <span>← Safe Return to Homepage</span>
+            </button>
+
+            <button
+              id="btn-login-404"
+              onClick={() => navigate('/login')}
+              className="w-full bg-slate-800 hover:bg-slate-755 text-white font-semibold uppercase text-[10px] tracking-widest py-3 rounded-none border border-slate-700 transition-all cursor-pointer"
+            >
+              Access Secure Client Portal
+            </button>
+          </div>
+
+          <div className="pt-2 text-center">
+            <p className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">
+              Document Ref: 404-ERR-NOTFOUND
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-slate-50/50 flex flex-col text-slate-900 selection:bg-yellow-100 selection:text-slate-950 font-sans" id="app-root">
       
@@ -374,7 +461,7 @@ export default function App() {
               A Complete Suite of Legal & Corporate Frameworks
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-2xl mx-auto font-body-serif">
-              Forming a trade setup online is more than just filling basic sheets. Designed with direct inspiration from LegalZoom corporate models, US LLC provides automated tracking engines to scale, protect, and defend your ventures. 
+              Forming a company online is more than just submitting state paperwork. Built as a unified enterprise registry system, US LLC provides automated state tracking, compliance alarms, and intellectual property screening engines to scale, protect, and defend your legal ventures. 
             </p>
           </div>
 
@@ -432,12 +519,12 @@ export default function App() {
           <FormationCalculator />
         </section>
 
-        {/* Tabbed Legal zoom inspired verticals explore */}
+        {/* Professional corporate verticals explore */}
         <section id="verticals" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
           <div className="text-center max-w-3xl mx-auto space-y-2 mb-10">
             <span className="text-[10px] uppercase font-bold tracking-widest text-slate-400 font-mono">Explore Verticals</span>
             <h3 className="text-2xl sm:text-3xl font-serif font-black text-slate-955 tracking-tight">
-              LegalZoom-Inspired Service Portfolio
+              Premium Corporate Service Portfolio
             </h3>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed font-body-serif">
               We are scaling usllc.online to accommodate all primary operations sectors. Browse our features, check estimated base costs, and explore the typical process sequence.
@@ -494,10 +581,10 @@ export default function App() {
               <div className="space-y-1.5 p-4 rounded-none bg-slate-50 border border-slate-150">
                 <h5 className="font-bold text-slate-900 flex items-center gap-1.5 font-sans">
                   <HelpCircle className="w-4 h-4 text-indigo-600" />
-                  Is usllc.online affiliated with LegalZoom.com?
+                  Is usllc.online an accredited business registry platform?
                 </h5>
                 <p className="leading-relaxed font-body-serif text-slate-550">
-                  No. We are entirely independent and inspired by LegalZoom's highly recognized full-spectrum service grids to expand our domestic setup solutions for global founders.
+                  Yes. US LLC operates as an independent, premier business filing and registered agent service. We work closely with respective state-level commerce divisions and the Secretaries of State to streamline business formations rapidly, ensuring professional self-help compliance.
                 </p>
               </div>
 
@@ -584,17 +671,33 @@ export default function App() {
               </ul>
             </div>
 
-            {/* Col 4: Reach Info and SaaSSkul details */}
+            {/* Col 4: Reach Info, About Us, Contact, and support details */}
             <div className="space-y-3">
-              <h5 className="text-[11px] font-bold tracking-wider uppercase text-yellow-500 font-mono">Support Communications</h5>
-              <p className="text-[11px] text-slate-400 leading-relaxed font-body-serif">
-                For prompt suggestion reviews, email our core team at support:
-              </p>
-              <div className="space-y-1 text-slate-300 font-mono text-xs">
-                <a href="mailto:admin@usllc.online" className="block text-yellow-400 hover:underline">
-                  admin@usllc.online
-                </a>
-              </div>
+              <h5 className="text-[11px] font-bold tracking-wider uppercase text-yellow-500 font-mono">Support & Trust</h5>
+              <ul className="space-y-2 text-xs text-slate-400 font-body-serif">
+                <li>
+                  <button 
+                    onClick={() => navigate('/about')} 
+                    className="hover:text-yellow-400 text-left cursor-pointer transition-colors bg-transparent border-0 p-0 text-xs font-body-serif font-normal text-slate-400"
+                  >
+                    Regulatory Credentials & About Us
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => navigate('/contact')} 
+                    className="hover:text-yellow-400 text-left cursor-pointer transition-colors bg-transparent border-0 p-0 text-xs font-body-serif font-normal text-slate-400"
+                  >
+                    Contact Electronic Filing Desk
+                  </button>
+                </li>
+                <li className="pt-1.5">
+                  <span className="block text-[10px] text-slate-500 uppercase tracking-wider font-mono">Direct Communication</span>
+                  <a href="mailto:admin@usllc.online" className="block text-yellow-400 hover:underline font-mono text-xs mt-0.5">
+                    admin@usllc.online
+                  </a>
+                </li>
+              </ul>
             </div>
 
           </div>

@@ -91,7 +91,7 @@ export default function TrademarkSearch() {
             Brand Protection Clearance Simulator
           </h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto leading-relaxed font-body-serif">
-            Inspiration from LegalZoom's trademark screening algorithms. Check if your trade mark stands alone or clashes with current federal registries.
+            Powered by our proprietary USPTO-aligned semantic parsing algorithms, our scanning tools help you check if your proposed trade mark stands alone or conflicts with active federal registries.
           </p>
         </div>
 
@@ -101,7 +101,7 @@ export default function TrademarkSearch() {
             <input
               id="input-trademark-query"
               type="text"
-              placeholder="e.g. SaaSSkul, LegalZoom, Apple, MyBrand"
+              placeholder="e.g. SaaSSkul, ApexCorp, Apple, MyBrand"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full text-xs rounded-none bg-indigo-950/60 border border-indigo-900 focus:bg-indigo-950 focus:border-indigo-505 transition-all pl-10 pr-3 py-3.5 focus:outline-none text-slate-200 uppercase tracking-wider font-semibold"

@@ -19,7 +19,7 @@ We implement an **Editorial Aesthetic** characterized by pairing high-caliber cl
    - Adapts on-the-fly to showcase high-definition company still images or streaming video formats.
    - Fully supports **YouTube embed players** and **Google Photos library** urls via a dynamic form integration block.
 
-2. **LegalZoom-Inspired Service Explorer:**
+2. **Premium Legal & Corporate Service Explorer:**
    - Fully categorized vertical search tabs (Business Formation, Compliance & Agent, Intellectual Property protection, and Living Wills & Estate Trusts).
    - Dynamic search filters and clear interactive breakdowns explaining essential steps and fee estimates for each vertical.
 
