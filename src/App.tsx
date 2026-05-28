@@ -166,6 +166,8 @@ export default function App() {
     };
     updateTwitterTag('twitter:title', title);
     updateTwitterTag('twitter:description', desc);
+    updateTwitterTag('twitter:site', '@SaaSSkul');
+    updateTwitterTag('twitter:creator', '@SaaSSkul');
 
     // 8. Dynamic JSON-LD structured data update
     let jsonLdNode = document.getElementById('seo-jsonld');

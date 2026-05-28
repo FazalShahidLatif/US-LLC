@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /contact
+Allow: /login
+Allow: /profile
+Disallow: /admin
+
+Sitemap: https://usllc.online/sitemap.xml
