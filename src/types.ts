@@ -31,7 +31,7 @@ export interface Inquiry {
   timestamp: string;
 }
 
-export type UserRole = 'admin' | 'staff' | 'user';
+export type UserRole = 'admin' | 'staff' | 'user' | 'superadmin';
 
 export interface AuthSession {
   token: string;

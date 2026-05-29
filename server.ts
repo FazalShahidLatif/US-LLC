@@ -17,6 +17,12 @@ function signToken(payload: object): string {
 // Predefined set of credentials mapping to roles for transparent evaluation
 const PREDEFINED_USERS = [
   {
+    email: 'superadmin@usllc.online',
+    password: 'superadmin-secret-access',
+    role: 'superadmin',
+    name: 'Chief Executive Governor'
+  },
+  {
     email: 'admin@usllc.online',
     password: 'admin-secret-access',
     role: 'admin',
@@ -91,7 +97,7 @@ async function startServer() {
       }
       
       const sessionData = JSON.parse(Buffer.from(body, 'base64url').toString('utf8'));
-      if (sessionData.role !== 'admin' && sessionData.role !== 'staff') {
+      if (sessionData.role !== 'admin' && sessionData.role !== 'staff' && sessionData.role !== 'superadmin') {
         return res.status(403).json({ error: "Access Denied: Insufficient roles permissions level" });
       }
 

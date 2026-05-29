@@ -205,7 +205,7 @@ export default function App() {
   // Secure conditional routing rules
   useEffect(() => {
     if (currentPath === '/login' && session) {
-      if (session.role === 'admin' || session.role === 'staff') {
+      if (session.role === 'admin' || session.role === 'staff' || session.role === 'superadmin') {
         navigate('/admin');
       } else {
         navigate('/profile');
@@ -219,7 +219,7 @@ export default function App() {
     } else if (currentPath === '/profile') {
       if (!session) {
         navigate('/login');
-      } else if (session.role === 'admin' || session.role === 'staff') {
+      } else if (session.role === 'admin' || session.role === 'staff' || session.role === 'superadmin') {
         navigate('/admin');
       }
     }
@@ -246,7 +246,7 @@ export default function App() {
     );
   }
 
-  if (currentPath === '/admin' && session && (session.role === 'admin' || session.role === 'staff')) {
+  if (currentPath === '/admin' && session && (session.role === 'admin' || session.role === 'staff' || session.role === 'superadmin')) {
     return (
       <OperationsDashboard 
         session={session} 

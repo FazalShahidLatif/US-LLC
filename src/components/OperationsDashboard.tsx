@@ -35,6 +35,7 @@ export default function OperationsDashboard({ session, onLogout, onNavigateHome 
   const [bypassUSPTO, setBypassUSPTO] = useState(false);
   const [firewallStrict, setFirewallStrict] = useState(true);
   const [activeFilerWorker, setActiveFilerWorker] = useState(true);
+  const [maintenanceLock, setMaintenanceLock] = useState(false);
   const [triggerCount, setTriggerCount] = useState(0);
   const [successStatus, setSuccessStatus] = useState('');
 
@@ -299,12 +300,12 @@ export default function OperationsDashboard({ session, onLogout, onNavigateHome 
               )}
 
               {/* ROLE RESTRICTION VISUALS DETAILED RULES */}
-              {session.role === 'admin' ? (
+              {(session.role === 'admin' || session.role === 'superadmin') ? (
                 // Administrator Unlocked controls
                 <div className="space-y-4" id="div-admin-unlocked-controls">
                   <div className="inline-flex items-center space-x-2 bg-emerald-950 text-emerald-450 border border-emerald-900 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1">
                     <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Administrator Override Access Logged</span>
+                    <span>{session.role === 'superadmin' ? 'Super Admin System Governance Logged' : 'Administrator Override Access Logged'}</span>
                   </div>
 
                   {/* Toggle 1 */}
@@ -366,6 +367,48 @@ export default function OperationsDashboard({ session, onLogout, onNavigateHome 
                       <div className="w-9 h-5 bg-indigo-950 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-400 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-650"></div>
                     </label>
                   </div>
+
+                  {/* Super Admin Exclusive Governance suite */}
+                  {session.role === 'superadmin' && (
+                    <div id="div-superadmin-exclusive-controls" className="pt-4 border-t border-indigo-950 space-y-3.5">
+                      <span className="block text-[10px] text-yellow-500 font-mono uppercase font-black tracking-widest flex items-center gap-1">
+                        <span>★</span> Super Admin Governance Actions
+                      </span>
+                      
+                      {/* State Registry Maintenance Mode */}
+                      <div className="p-3.5 bg-yellow-950/20 border border-yellow-900/40 flex items-center justify-between">
+                        <div>
+                          <span className="block text-xs font-bold text-yellow-500 uppercase">Global Maintenance Lock</span>
+                          <p className="text-[10px] text-slate-400 mt-0.5">Locks form registries for updates.</p>
+                        </div>
+                        <label className="relative inline-flex items-center cursor-pointer">
+                          <input 
+                            type="checkbox" 
+                            checked={maintenanceLock} 
+                            onChange={(e) => {
+                              setMaintenanceLock(e.target.checked);
+                              handleAdminToggleTrigger('Global Maintenance Mode');
+                            }}
+                            className="sr-only peer" 
+                          />
+                          <div className="w-9 h-5 bg-indigo-950 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-slate-450 after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-yellow-600"></div>
+                        </label>
+                      </div>
+
+                      {/* Clear Cache Staging */}
+                      <button 
+                        type="button"
+                        onClick={() => {
+                          setTriggerCount(prev => prev + 1);
+                          setSuccessStatus('DATABASE FLUSH EXECUTED: Staging system caches purged successfully.');
+                          setTimeout(() => setSuccessStatus(''), 4500);
+                        }}
+                        className="w-full py-2.5 bg-rose-950/80 hover:bg-rose-900 border border-rose-900 text-rose-250 text-[10px] font-black uppercase tracking-widest transition-all duration-150 cursor-pointer text-center"
+                      >
+                        Flush Cached Entity Registries
+                      </button>
+                    </div>
+                  )}
 
                   <div className="text-[10px] text-[#070a13] bg-indigo-305 text-center p-2.5 font-bold uppercase tracking-wider font-mono">
                     System Override Changes Logged: {triggerCount}

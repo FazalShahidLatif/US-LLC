@@ -12,9 +12,17 @@ export default function Login({ onLoginSuccess, onNavigateHome }: LoginProps) {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [loginRealm, setLoginRealm] = useState<'user' | 'corporate'>('user');
 
   // Built-in credential helper configurations
   const PRESET_CREDENTIALS = [
+    {
+      label: 'Super Admin Account',
+      email: 'superadmin@usllc.online',
+      password: 'superadmin-secret-access',
+      role: 'superadmin',
+      badge: 'Chief Executive Governor'
+    },
     {
       label: 'Admin Account',
       email: 'admin@usllc.online',
@@ -140,6 +148,38 @@ export default function Login({ onLoginSuccess, onNavigateHome }: LoginProps) {
             {/* Top tiny status strip */}
             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-indigo-400 to-indigo-550"></div>
 
+            {/* Login Area Realm Selection tabs */}
+            <div className="grid grid-cols-2 gap-1 bg-[#090d17] p-1 border border-indigo-950/80">
+              <button
+                type="button"
+                onClick={() => {
+                  setLoginRealm('user');
+                  setErrorMessage('');
+                }}
+                className={`py-2 text-[10px] uppercase tracking-widest font-bold font-mono transition-all cursor-pointer text-center ${
+                  loginRealm === 'user'
+                    ? 'bg-indigo-650 text-white'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-900/40'
+                }`}
+              >
+                User Login Area
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setLoginRealm('corporate');
+                  setErrorMessage('');
+                }}
+                className={`py-2 text-[10px] uppercase tracking-widest font-bold font-mono transition-all cursor-pointer text-center ${
+                  loginRealm === 'corporate'
+                    ? 'bg-indigo-900/80 text-white border-l border-indigo-950'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-900/40'
+                }`}
+              >
+                Super Admin Gate
+              </button>
+            </div>
+
             {errorMessage && (
               <div className="p-4 bg-rose-950/80 border border-rose-900 text-rose-200 text-xs flex items-start gap-3 rounded-none font-sans leading-relaxed">
                 <AlertCircle className="w-4 h-4 text-rose-500 flex-shrink-0 mt-0.5" />
@@ -211,7 +251,13 @@ export default function Login({ onLoginSuccess, onNavigateHome }: LoginProps) {
                 Click a testing role target to dynamically load matched credentials:
               </p>
               <div className="grid grid-cols-1 gap-2">
-                {PRESET_CREDENTIALS.map((cred) => (
+                {PRESET_CREDENTIALS.filter(cred => {
+                  if (loginRealm === 'user') {
+                    return cred.role === 'user';
+                  } else {
+                    return cred.role !== 'user';
+                  }
+                }).map((cred) => (
                   <button
                     key={cred.role}
                     type="button"
@@ -226,8 +272,8 @@ export default function Login({ onLoginSuccess, onNavigateHome }: LoginProps) {
                         {cred.email}
                       </span>
                     </div>
-                    <span className="text-[9px] font-mono px-2 py-0.5 bg-indigo-950 text-indigo-400 border border-indigo-900 font-semibold">
-                      {cred.role.toUpperCase()}
+                    <span className="text-[9px] font-mono px-2 py-0.5 bg-indigo-950 text-indigo-400 border border-indigo-900 font-semibold uppercase">
+                      {cred.role === 'superadmin' ? 'SUPER ADMIN' : cred.role.toUpperCase()}
                     </span>
                   </button>
                 ))}
